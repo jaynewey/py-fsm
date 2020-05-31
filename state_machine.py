@@ -60,3 +60,7 @@ class FiniteStateMachine:
             states = json.load(json_file)
         json_file.close()
         return FiniteStateMachine(states=states)
+
+    def __iter__(self):
+        for state, actions in self._states.items():
+            yield state, actions
