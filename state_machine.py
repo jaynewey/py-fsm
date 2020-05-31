@@ -28,9 +28,12 @@ class FiniteStateMachine:
 
         :param state: The state that you want the actions map for.
         :type state: str
-        :return: This object so that function calls can be chained.
+        :return: The actions you can take at the given state. None if the state doesn't exist.
+        :rtype: dict
         """
-        return self._states[state]
+        if state in self._states.keys():
+            return self._states[state]
+        return None
 
     def do_action(self, action):
         """Performs an given action at the current state, changing state accordingly.
